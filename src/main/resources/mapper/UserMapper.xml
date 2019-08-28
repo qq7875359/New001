@@ -8,5 +8,7 @@
 	  <select id="get" parameterType="int" resultType="string">
 	  	select password from user where id=#{id}
 	  </select>
-	  
+	  <select id="getpassword" parameterType="String" resultType="string">
+	    select password from user where username=#{username}
+	  </select>
 	</mapper>

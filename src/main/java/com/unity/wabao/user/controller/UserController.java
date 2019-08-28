@@ -3,8 +3,13 @@ package com.unity.wabao.user.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,8 +38,6 @@ public class UserController {
 	public String index(){
 		return "userLogin/upLogin";
 	}
-	
-	
 	@RequestMapping(value="uplogin",method=RequestMethod.GET)
 	public String getUsername(){
 		System.out.println("~~~~~~~~~~~");
@@ -42,7 +45,21 @@ public class UserController {
 		System.out.println(password);
 		return "index";
 	}
-	
+	@RequestMapping("login")
+	public String login(String username,String password,Model m) {
+
+		Subject subject=SecurityUtils.getSubject();
+		UsernamePasswordToken token=new UsernamePasswordToken(username,password);
+		try {
+			subject.login(token);
+			m.addAttribute("msg", "成功");
+		} catch (AuthenticationException e) {
+			// TODO: handle exception
+			m.addAttribute("msg", "失败");
+			return "login";
+		}
+		return "login";
+	}
 	/**
 	 * 短信验证接口
 	 * 

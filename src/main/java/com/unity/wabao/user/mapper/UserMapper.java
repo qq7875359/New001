@@ -5,4 +5,5 @@ import org.apache.ibatis.annotations.Param;
 public interface UserMapper {
 
 	String get(@Param("id")int id);
+	public String getpassword(String username);
 }

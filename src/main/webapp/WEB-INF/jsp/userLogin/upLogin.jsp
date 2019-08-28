@@ -11,6 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/userLogin/css/upLogin/dialog.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/userLogin/css/upLogin/login.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/userLogin/css/upLogin/footer.css" />
+		<script type="text/javascript" href="${pageContext.request.contextPath}/userLogin/js/upLogin/jquery.min.js"></script>
 		<title>登录</title>		
 	</head>
 	<body>
@@ -19,10 +20,11 @@
 				<span class="logo">logo部分</span>
 			</a>
 		</div>
+		
 		<div class="login-box">		
 			<div class="login-title">登录</div>
 			<div class="login-form">
-				<form action="" id="form">
+				<form action="login" id="form">
 					<!--账户名-->
 					<div class="form-item user">
 						<div class="form-ctrl">
@@ -58,7 +60,7 @@
                     
                     <!--登录按钮-->
                     <div class="form-item form-button">
-                        <button type="button" class="btn btn-green block btn-login" onclick="checkForm()">登录 </button>
+                        <button type="submit" class="btn btn-green block btn-login" >登录 </button>
                     </div>
                     
                     <div class="form-item form-button">
